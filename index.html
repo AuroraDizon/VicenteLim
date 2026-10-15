@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help Find Vicente Lim</title>
+<meta name="description" content="Our family is searching for information about Vicente Lim. Any detail helps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0c0e;
+    --text:#f4f5f6;
+    --text-soft:#c8cbd0;
+    --glass:rgba(255,255,255,.07);
+    --glass-strong:rgba(255,255,255,.11);
+    --edge:rgba(255,255,255,.18);
+    --edge-soft:rgba(255,255,255,.10);
+    --button:#f4f5f6;
+    --button-text:#0b0c0e;
+    --radius:24px;
+    --wrap:1240px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Atkinson Hyperlegible",Verdana,sans-serif;
+    font-size:1.25rem;            /* 20px base, easy to read */
+    line-height:1.6;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* Soft grey light behind the glass */
+  .backdrop{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+  .backdrop span{position:absolute;border-radius:50%;filter:blur(90px)}
+  .backdrop .a{width:620px;height:620px;left:-160px;top:-120px;background:#4b4f57;opacity:.55}
+  .backdrop .b{width:520px;height:520px;right:-140px;top:30%;background:#6b7079;opacity:.35}
+  .backdrop .c{width:700px;height:700px;left:25%;bottom:-360px;background:#3a3d43;opacity:.6}
+
+  a{color:var(--text)}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+
+  .glass{
+    background:var(--glass);
+    border:1px solid var(--edge);
+    border-radius:var(--radius);
+    backdrop-filter:blur(22px) saturate(120%);
+    -webkit-backdrop-filter:blur(22px) saturate(120%);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.12);
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    min-height:56px;padding:0 28px;border-radius:999px;
+    font:700 1.2rem "Atkinson Hyperlegible",sans-serif;
+    text-decoration:none;cursor:pointer;border:2px solid var(--button);
+    background:var(--button);color:var(--button-text);
+    transition:transform .15s, background .15s, color .15s;
+  }
+  .btn:hover{transform:translateY(-2px);background:#ffffff;color:#000}
+  .btn-glass{background:var(--glass-strong);color:var(--text);border-color:var(--edge)}
+  .btn-glass:hover{background:rgba(255,255,255,.18);color:var(--text)}
+  :focus-visible{outline:3px solid #ffffff;outline-offset:4px}
+
+  section{margin:0 0 40px}
+
+  /* ROW 1: Heroes needed · name panel · Help my family */
+  .top{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:32px;align-items:center;
+    padding-top:56px;
+  }
+  .heroes{
+    font-weight:700;font-size:1.5rem;line-height:1.2;margin:0;
+    letter-spacing:.02em;
+    align-self:start;padding-top:28px;
+  }
+  .heroes small{display:block;font-weight:400;font-size:1rem;color:var(--text-soft);letter-spacing:.12em;text-transform:uppercase}
+  .name-panel{padding:48px 56px 56px}
+  .name-panel p{margin:0 0 8px;font-size:1.6rem;color:var(--text-soft)}
+  h1{
+    margin:0;font-weight:700;
+    font-size:clamp(3.5rem,9vw,8rem);
+    line-height:1;letter-spacing:-.01em;
+  }
+
+  /* ROW 2: the story */
+  .story{padding:48px 56px}
+  .story p{
+    margin:0;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.5;
+  }
+
+  /* ROW 3: known · document · leads */
+  .bottom{
+    display:grid;
+    grid-template-columns:1fr 1.1fr 1fr;
+    gap:28px;align-items:start;
+  }
+  .box{padding:36px 36px 40px;min-height:320px}
+  .box h2{
+    margin:0 0 20px;font-size:1.6rem;line-height:1.25;
+    padding-bottom:16px;border-bottom:1px solid var(--edge-soft);
+  }
+  .box ul{margin:0;padding:0 0 0 1.2em}
+  .box li{margin:0 0 12px}
+
+  .doc{padding:28px;text-align:center}
+  .doc h2{margin:0 0 4px;font-size:1.6rem}
+  .doc .sub{margin:0 0 20px;color:var(--text-soft);font-size:1.05rem}
+  .doc-frame{
+    display:block;border-radius:16px;overflow:hidden;
+    border:1px solid var(--edge);background:rgba(0,0,0,.35);
+    aspect-ratio:3/4;position:relative;text-decoration:none;
+  }
+  .doc-frame img{width:100%;height:100%;object-fit:contain;display:block;background:#1a1b1e}
+  .doc-empty{
+    position:absolute;inset:0;display:none;
+    flex-direction:column;align-items:center;justify-content:center;gap:12px;
+    padding:24px;color:var(--text-soft);font-size:1.05rem;
+    border:2px dashed var(--edge);border-radius:16px;
+  }
+  .doc-empty svg{width:56px;height:56px}
+  .doc-frame.missing .doc-empty{display:flex}
+  .doc-frame.missing img{display:none}
+  .doc .hint{margin:16px 0 0;font-size:1rem;color:var(--text-soft)}
+
+  /* Contact */
+  .contact{padding:48px 56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+  .contact h2{margin:0 0 6px;font-size:2rem;line-height:1.2}
+  .contact p{margin:0;color:var(--text-soft)}
+  .contact .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .copied{font-size:1rem;color:var(--text-soft);min-width:1px}
+
+  footer{padding:24px 0 56px;text-align:center;color:var(--text-soft);font-size:1.05rem}
+
+  @media (max-width:1000px){
+    .top{grid-template-columns:1fr;gap:20px;padding-top:32px}
+    .heroes{padding-top:0}
+    .help{justify-self:start}
+    .bottom{grid-template-columns:1fr}
+    .doc{order:-1}
+    .box{min-height:200px}
+  }
+  @media (max-width:600px){
+    body{font-size:1.15rem}
+    .name-panel,.story,.contact{padding:32px 24px}
+    .box{padding:28px 24px}
+    .btn{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<div class="backdrop" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span></div>
+
+<main class="wrap">
+
+  <!-- Row 1 -->
+  <section class="top">
+    <p class="heroes"><small>Please read</small>Heroes needed</p>
+    <div class="glass name-panel">
+      <p>Help find information on:</p>
+      <h1>Vicente Lim</h1>
+    </div>
+    <a class="btn help" href="#contact">Help my family</a>
+  </section>
+
+  <!-- Row 2 -->
+  <section class="glass story">
+    <p>My mother has stage IV terminal lung and brain cancer. It is a great wish of hers to find more information on the man who was her father.</p>
+  </section>
+
+  <!-- Row 3 -->
+  <section class="bottom">
+    <article class="glass box">
+      <h2>What we do know:</h2>
+      <ul>
+        <li><strong>Not</strong> the famous general Vicente Lim</li>
+        <li>Was a Chinese businessman whose family has ties to Fujian</li>
+        <li>Was in the logging business in Barangay Careal, near Botolan, Zambales</li>
+        <li>Was born before 1930</li>
+        <li>My mother was born in the mid to late 1950s</li>
+        <li>He moved to or near Santa Cruz, Zambales after she was born</li>
+        <!-- Add each fact as: <li>Your fact here</li> -->
+      </ul>
+    </article>
+
+    <article class="glass doc">
+      <h2>Our strongest lead</h2>
+      <p class="sub">Death certificate of Judith Factor Lim, 1965</p>
+      <!-- Upload your scan to the same folder as this page and name it: death-certificate.jpg -->
+      <a class="doc-frame" id="docFrame" href="death-certificate.jpg" target="_blank" rel="noopener">
+        <img src="death-certificate.jpg" alt="Death certificate for Judith" onerror="this.parentElement.classList.add('missing')">
+        <span class="doc-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="M9.5 13.5 12 11l2.5 2.5"/></svg>
+          Document coming soon
+        </span>
+      </a>
+      <p class="hint">Tap the document to see it full size.</p>
+    </article>
+
+    <article class="glass box">
+      <h2>Leads that we are unsure of:</h2>
+      <ul>
+        <li><strong>Judith Factor Lim (1941–1965)</strong>, born in Botolan, Zambales. Her death certificate names her father as Vicente Lim. We don't yet know if he is the same man.</li>
+        <li><strong>Luisa Factor</strong>, listed as Judith's sister. She lived at Gen. Kalentong, Mandaluyong in 1965.</li>
+        <li><strong>The Factor family of Botolan.</strong> Judith's mother was a Factor.</li>
+        <li><strong>Vicente may have died before 1965.</strong> Judith's 1965 death certificate lists her father as deceased.</li>
+        <!-- Add each lead as: <li>Your lead here</li> -->
+      </ul>
+    </article>
+  </section>
+
+  <!-- Contact -->
+  <section class="glass contact" id="contact">
+    <div>
+      <h2>Do you know something?</h2>
+      <p>Even a small detail can help.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="mailto:[YOUR EMAIL]?subject=Information%20about%20Vicente%20Lim">Email our family</a>
+      <button class="btn btn-glass" type="button" id="share">Share this page</button>
+      <span class="copied" id="copied" aria-live="polite"></span>
+    </div>
+  </section>
+
+</main>
+
+<footer>Thank you for helping our family.</footer>
+
+<script>
+  document.getElementById('share').addEventListener('click', async () => {
+    const msg = document.getElementById('copied');
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: location.href }); return; }
+      await navigator.clipboard.writeText(location.href);
+      msg.textContent = 'Link copied';
+    } catch (e) {
+      msg.textContent = 'Copy the link from your address bar';
+    }
+    setTimeout(() => { msg.textContent = ''; }, 3000);
+  });
+</script>
+</body>
+</html>
